@@ -7,7 +7,6 @@ import { Navigate } from "react-router-dom";
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
   const { isAuthenticated } = useContext(Context);
-
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
@@ -17,11 +16,7 @@ const Doctors = () => {
         );
         setDoctors(data.doctors);
       } catch (error) {
-        if (error.response) {
-          toast.error(error.response.data.message);
-        } else {
-          toast.error("An error occurred while fetching doctors.");
-        }
+        toast.error(error.response.data.message);
       }
     };
     fetchDoctors();
@@ -35,39 +30,38 @@ const Doctors = () => {
     <section className="page doctors">
       <h1>DOCTORS</h1>
       <div className="banner">
-        {doctors.length > 0 ? (
-          doctors.map((element) => (
-            <div className="card" key={element.id}>
-              {console.log(element.photo.url)}
+        {doctors && doctors.length > 0 ? (
+          doctors.map((doctor) => (
+            <div className="card" key={doctor._id}>
               <img
-                src={element.photo || element.photo.url}
-                alt="doctor avatar"
+                src={`http://localhost:4000/${doctor.photo}`}
+                alt={`${doctor.firstName} ${doctor.lastName}`}
               />
-              <h4>{`${element.firstName} ${element.lastName}`}</h4>
+              {console.log(doctor.firstName)}
+              <h4>{`${doctor.firstName} ${doctor.lastName}`}</h4>
               <div className="details">
                 <p>
-                  Email: <span>{element.email}</span>
+                  Email: <span>{doctor.email}</span>
                 </p>
                 <p>
-                  Phone: <span>{element.phone}</span>
+                  Phone: <span>{doctor.phone}</span>
                 </p>
                 <p>
-                  DOB:{" "}
-                  <span>{element.dob && element.dob.substring(0, 10)}</span>
+                  DOB: <span>{doctor.dob && doctor.dob.substring(0, 10)}</span>
                 </p>
                 <p>
-                  Department: <span>{element.doctorDepartment}</span>
+                  Department: <span>{doctor.doctorDepartment}</span>
                 </p>
                 <p>
-                  Gender: <span>{element.gender}</span>
+                  Gender: <span>{doctor.gender}</span>
                 </p>
                 <p>
-                  Available Days:<span>{element.workingDays}</span>
+                  Available Days: <span>{doctor.workingDays}</span>
                 </p>
                 <p>
-                  Time: <span>{element.startTime}</span>
-                  {"-"}
-                  <span>{element.endTime}</span>
+                  Time: <span>{doctor.startTime}</span>
+                  {" - "}
+                  <span>{doctor.endTime}</span>
                 </p>
               </div>
             </div>

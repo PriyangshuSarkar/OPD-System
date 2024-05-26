@@ -113,10 +113,12 @@ export const addNewAdmin = TryCatch(
 );
 
 export const getAllDoctors = TryCatch(async (req, res, next) => {
+  const SERVER_BASE_URL = "http://localhost:4000";
   const doctors = await User.find({ role: "Doctor" });
+
   res.status(200).json({
     success: true,
-    doctors,
+    doctors: doctors,
   });
 });
 

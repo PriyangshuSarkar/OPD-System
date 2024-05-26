@@ -36,7 +36,7 @@ app.use(express.json());
 
 // app.use(express.urlencoded({ extended: true }));
 
-app.use("/uploads", express.static("uploads"));
+app.use("/public/temp", express.static("./public/temp"));
 
 app.use(morgan("dev"));
 

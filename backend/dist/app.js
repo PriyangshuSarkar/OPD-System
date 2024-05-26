@@ -24,7 +24,7 @@ app.use(cors({
 }));
 app.use(cookieParser());
 app.use(express.json());
-app.use("/uploads", express.static("uploads"));
+app.use("/public/temp", express.static("./public/temp"));
 app.use(morgan("dev"));
 app.get("/", (req, res) => {
     res.send("API Working with /api/v1");
