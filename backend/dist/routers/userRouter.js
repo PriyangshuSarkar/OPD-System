@@ -7,7 +7,7 @@ router.post("/patient/register", patientRegister);
 router.post("/login", login);
 router.post("/admin/new", isAdminAuth, addNewAdmin);
 router.post("/doctor/new", isAdminAuth, singleUpload.single("docAvatar"), addNewDoctor);
-router.get("/doctors", isAdminAuth || isPatientAuth, getAllDoctors);
+router.get("/doctors", getAllDoctors);
 router.get("/admin/me", isAdminAuth, getUserDetails);
 router.get("/patient/me", isPatientAuth, getUserDetails);
 router.get("/admin/logout", isAdminAuth, logoutAdmin);

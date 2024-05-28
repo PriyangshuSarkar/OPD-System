@@ -27,7 +27,7 @@ router.post(
   addNewDoctor
 );
 
-router.get("/doctors", isAdminAuth || isPatientAuth, getAllDoctors);
+router.get("/doctors", getAllDoctors);
 
 router.get("/admin/me", isAdminAuth, getUserDetails);
 

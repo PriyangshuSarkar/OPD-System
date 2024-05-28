@@ -71,6 +71,7 @@ export const postAppointment = TryCatch(
       doctorId: doctor._id,
       appointment_date,
       appointment_time,
+      status: { $in: ["Accepted", "Pending"] },
     });
 
     if (isConflict) {
@@ -141,6 +142,12 @@ export const postAppointment = TryCatch(
     });
   }
 );
+
+export const getPatientAppointments = TryCatch(async (req, res, next) => {
+  const patientId = req.user;
+  const appointments = await Appointment.find({ patientId });
+  res.status(200).json(appointments);
+});
 
 export const getAllAppointments = TryCatch(async (req, res, next) => {
   const appointment = await Appointment.find();

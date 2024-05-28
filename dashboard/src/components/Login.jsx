@@ -42,7 +42,7 @@ const Login = () => {
     <>
       <section className="container form-component">
         <img src="/logo.png" alt="logo" className="logo" />
-        <h1 className="form-title">WELCOME TO ZEECARE</h1>
+        <h1 className="form-title">WELCOME TO OPD-Dashboard</h1>
         <p>Only Admins Are Allowed To Access These Resources!</p>
         <form onSubmit={handleLogin}>
           <input

@@ -40,8 +40,14 @@ const Navbar = () => {
             <Link to={"/"} onClick={() => setShow(!show)}>
               Home
             </Link>
+            <Link to={"/doctors"} onClick={() => setShow(!show)}>
+              Doctors
+            </Link>
             <Link to={"/appointment"} onClick={() => setShow(!show)}>
               Appointment
+            </Link>
+            <Link to={"/bookings"} onClick={() => setShow(!show)}>
+              Bookings
             </Link>
             <Link to={"/about"} onClick={() => setShow(!show)}>
               About Us

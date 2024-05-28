@@ -14,6 +14,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Context } from "./main";
 import axios from "axios";
+import Bookings from "./pages/Bookings";
+import Doctors from "./pages/Doctors";
 
 const App = () => {
   const { isAuthenticated, setIsAuthenticated, setUser } = useContext(Context);
@@ -44,8 +46,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/doctors" element={<Doctors />} />
           <Route path="/register" element={<Register />} />
           <Route path="/appointment" element={<Appointment />} />
+          <Route path="/bookings" element={<Bookings />} />
           <Route path="/about" element={<AboutUs />} />
         </Routes>
         <ToastContainer position="top-center" />

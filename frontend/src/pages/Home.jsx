@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <>
       <Hero
-        title={"Welcome to OPD Window | Your Trusted Healthcare Provider "}
+        title={"Welcome to OPD-Window | Your Trusted Healthcare Provider "}
         imageUrl={"/hero.png"}
       />
       <Biography imageUrl={"/about.png"} />

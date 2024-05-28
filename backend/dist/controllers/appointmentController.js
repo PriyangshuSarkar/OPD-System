@@ -43,6 +43,7 @@ export const postAppointment = TryCatch(async (req, res, next) => {
         doctorId: doctor._id,
         appointment_date,
         appointment_time,
+        status: { $in: ["Accepted", "Pending"] },
     });
     if (isConflict) {
         return next(new ErrorHandler("Time slot is already booked!", 400));
@@ -88,6 +89,11 @@ export const postAppointment = TryCatch(async (req, res, next) => {
         message: "Appointment sent successfully!",
         appointment,
     });
+});
+export const getPatientAppointments = TryCatch(async (req, res, next) => {
+    const patientId = req.user;
+    const appointments = await Appointment.find({ patientId });
+    res.status(200).json(appointments);
 });
 export const getAllAppointments = TryCatch(async (req, res, next) => {
     const appointment = await Appointment.find();
